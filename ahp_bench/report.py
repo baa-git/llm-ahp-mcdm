@@ -786,7 +786,7 @@ def make_figures(fd, out: Path) -> list[tuple[str, str, str]]:
         ax.tick_params(length=0)
         if not np.isfinite(data).any():
             ax.text(3.5, (len(rows) - 1) / 2, "no data", ha="center", va="center", color="0.4")
-    fig.colorbar(im, ax=list(axes), shrink=0.8, label="Model weight − expert weight (pp)")
+    fig.colorbar(im, ax=list(axes), shrink=0.8, label="Model weight − expert weight (percentage points)")
     figs.append(("F1_global_weight_diff_heatmap", _save(fig, out, "F1_global_weight_diff_heatmap"),
                  "Heatmap of model minus expert global weights in percentage points for the eight global "
                  "indicators, one panel per condition, with the condition panel in the last row."))
