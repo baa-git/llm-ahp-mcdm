@@ -1,0 +1,44 @@
+{
+  "_comment": "Criteria spec for the SYNTHETIC example data set orders_synthetic.csv (invented orders, see make_orders_synthetic.py). It shows the format; the criteria are an illustration, not a recommendation. Keys starting with '_' are comments.",
+  "spec_version": 1,
+  "proposed_by": "human",
+  "problem": {
+    "name": "orders_synthetic",
+    "title": "Supplier evaluation from synthetic order records (example)",
+    "goal": "evaluating suppliers of purchased components",
+    "role": "You are a procurement professional with experience in supplier evaluation."
+  },
+  "alternative_column": "supplier",
+  "indicators": [
+    {"id": "PRICE", "label": "Mean unit price", "aggregation": "mean", "column": "unit_price",
+     "direction": "cost", "unit": "USD per unit", "rationale": "Average price paid per unit over all orders (unit_price)."},
+    {"id": "DEFECT", "label": "Defective unit rate", "aggregation": "ratio", "numerator": "defective_units",
+     "denominator": "quantity", "filter": {"column": "delivery_status", "not_equals": "Cancelled"}, "scale": 100,
+     "direction": "cost", "unit": "% of delivered units",
+     "rationale": "Defective units divided by ordered units over delivered orders (defective_units, quantity)."},
+    {"id": "ONTIME", "label": "On-time delivery rate", "aggregation": "share", "column": "delivery_status",
+     "value": "On time", "filter": {"column": "delivery_status", "not_equals": "Cancelled"}, "scale": 100,
+     "direction": "benefit", "unit": "% of delivered orders",
+     "rationale": "Share of delivered orders with delivery_status 'On time'."},
+    {"id": "LEAD", "label": "Mean lead time", "aggregation": "mean", "column": "lead_time_days",
+     "direction": "cost", "unit": "days", "rationale": "Average days from order to delivery (lead_time_days; empty for cancelled orders)."},
+    {"id": "CANCEL", "label": "Cancellation rate", "aggregation": "share", "column": "delivery_status",
+     "value": "Cancelled", "scale": 100, "direction": "cost", "unit": "% of orders",
+     "rationale": "Share of all orders with delivery_status 'Cancelled'."},
+    {"id": "COMPLY", "label": "Compliance pass rate", "aggregation": "share", "column": "compliance_check",
+     "value": "Pass", "scale": 100, "direction": "benefit", "unit": "% of orders",
+     "rationale": "Share of orders whose compliance_check is 'Pass'."}
+  ],
+  "hierarchy": {
+    "criteria": [
+      {"name": "Cost", "indicator": "PRICE"},
+      {"name": "Quality", "indicator": "DEFECT"},
+      {"name": "Delivery", "sub_criteria": [
+        {"name": "On-time Delivery", "indicator": "ONTIME"},
+        {"name": "Lead Time", "indicator": "LEAD"},
+        {"name": "Cancellations", "indicator": "CANCEL"}
+      ]},
+      {"name": "Compliance", "indicator": "COMPLY"}
+    ]
+  }
+}

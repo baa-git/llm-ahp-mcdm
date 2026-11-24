@@ -1,0 +1,10 @@
+{
+  "name": "llm-ahp-mcdm",
+  "version": "1.0.0",
+  "description": "From a data set to an AHP decision: EDA, criteria and hierarchy, performance matrix, criteria weights from LLM respondents (subagents of your Claude Code session, or OpenRouter models), consistency checks and revision, TOPSIS/ARAS/EDAS ranking. The skill runs the ahp-bench command (pip install git+https://github.com/baa-git/llm-ahp-mcdm@v1.0.0).",
+  "author": {"name": "Batur Alp Akdoğan"},
+  "homepage": "https://github.com/baa-git/llm-ahp-mcdm",
+  "repository": "https://github.com/baa-git/llm-ahp-mcdm",
+  "license": "MIT",
+  "keywords": ["AHP", "MCDM", "TOPSIS", "ARAS", "EDAS", "decision analysis"]
+}

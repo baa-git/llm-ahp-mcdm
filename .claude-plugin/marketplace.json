@@ -1,0 +1,14 @@
+{
+  "name": "llm-ahp-mcdm",
+  "owner": {"name": "Batur Alp Akdoğan"},
+  "metadata": {"description": "The llm-ahp-mcdm agent skill as a Claude Code plugin."},
+  "plugins": [
+    {
+      "name": "llm-ahp-mcdm",
+      "source": "./",
+      "description": "From a data set to an AHP decision: EDA, criteria, hierarchy, LLM-elicited AHP weights, consistency revision, TOPSIS/ARAS/EDAS ranking.",
+      "version": "1.0.0",
+      "license": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below. The study's data and results are cited separately (https://github.com/baa-git/llm-ahp-mcdm-study)."
+title: "llm-ahp-mcdm: LLM respondents in AHP-based multi-criteria decision making"
+type: software
+authors:
+  - given-names: "Batur Alp"
+    family-names: "Akdoğan"
+repository-code: "https://github.com/baa-git/llm-ahp-mcdm"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-24"
+keywords:
+  - analytic hierarchy process
+  - multi-criteria decision making
+  - large language models
+  - TOPSIS
+  - ARAS
+  - EDAS
+  - agent skill

@@ -1,0 +1,24 @@
+# secrets (keys live only in the environment or in .env)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# outputs of runs and checks (the published study lives in llm-ahp-mcdm-study)
+results/
+work/
+check/
+*.bak
+
+# private work log and local agent settings
+_calisma-notlari.md
+.claude/settings.local.json
+.claude/skills/

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-ahp-mcdm"
+version = "1.0.0"
+description = "From a data set to an AHP decision with LLM respondents: EDA, criteria and hierarchy, performance matrix, pairwise weights (subscription host mode or OpenRouter), consistency revision, TOPSIS/ARAS/EDAS ranking, and an agent skill"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Batur Alp Akdoğan"}]
+keywords = ["AHP", "MCDM", "LLM", "TOPSIS", "ARAS", "EDAS", "EDA", "OpenRouter", "agent skill"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+figures = ["matplotlib"]
+
+[project.scripts]
+ahp-bench = "ahp_bench.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/baa-git/llm-ahp-mcdm"
+Study = "https://github.com/baa-git/llm-ahp-mcdm-study"
+
+[tool.setuptools]
+# problems/ (example problem, study problem, guided prompt files), skills/ (the agent skill) and examples/ (the
+# synthetic data set walk-through) live at the repository root and are shipped inside the package as
+# ahp_bench/problems, ahp_bench/skills and ahp_bench/examples.
+packages = ["ahp_bench", "ahp_bench.problems", "ahp_bench.skills", "ahp_bench.examples"]
+
+[tool.setuptools.package-dir]
+"ahp_bench.problems" = "problems"
+"ahp_bench.skills" = "skills"
+"ahp_bench.examples" = "examples"
+
+[tool.setuptools.package-data]
+ahp_bench = ["cost_reference.json"]
+"ahp_bench.problems" = ["*.json", "guided/*"]
+"ahp_bench.skills" = ["llm-ahp-mcdm/SKILL.md", "llm-ahp-mcdm/references/*.md"]
+"ahp_bench.examples" = ["*.csv", "*.json", "*.py", "*.md"]
